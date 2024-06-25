@@ -1,0 +1,83 @@
+{
+    "experiment_naming":"thumos-I3D",
+    "dataset_name":"thumos14",
+
+    "feature_oversample":true,
+    "sample_rate":16,
+    "feature_dim":1024,
+
+    "batch_size":24,
+    "learning_rate":1e-4,
+    "learning_rate_decay":false,
+    "weight_decay":1e-3,
+
+    "bg_weight":0.1,
+    "similarity_weight":0.3,
+
+    "max_step_num":24005,
+    "check_points":[
+         6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,1900,20000
+    ],
+
+    "model_params":{
+        "dropout_rate":0.5,
+        "layer_params":[
+            [
+                256,
+                3
+            ]
+        ]
+    },
+
+    "detect_params":{
+        "global_score_thrh":0.2,
+        "thrh_value":1,
+        "proc_value":1,
+        "sample_offset":7,
+        "multi_scale":4,
+        "weight_inner":1,
+        "weight_outter":-1,
+        "weight_global":0.25
+    },
+
+    "action_class_num":21,
+    "base_sample_rate":4,
+    "base_snippet_size":16,
+
+    "train_subset_name" : "val",
+    "test_subset_name" : "test",
+    "outfile_path" :"./result.txt",
+    "file_paths":{
+        "thumos14":{
+            "val":{
+                "meta_file":"./labels/thumos14-val-meta.mat",
+                "anno_dir":"./labels/thumos14-val-annotations",
+                "feature_dir":{
+                    "i3d-resize":{
+                        "rgb":"/data/yujiaruo/THUMOS14_Feature_V1//THUMOS14_FEATURES/I3D-4/thumos-val-rgb-resize",
+                        "flow":"/data/yujiaruo/THUMOS14_Feature_V1//THUMOS14_FEATURES/I3D-4/thumos-val-flow-resize"
+                    },
+                    "i3d-oversample":{
+                        "rgb":"/data/yujiaruo/THUMOS14_Feature_V1//THUMOS14_FEATURES/I3D-4/thumos-val-rgb-oversample",
+                        "flow":"/data/yujiaruo/THUMOS14_Feature_V1//THUMOS14_FEATURES/I3D-4/thumos-val-flow-oversample"
+                    }
+                }
+            },
+            "test":{
+                "meta_file":"./labels/thumos14-test-meta.mat",
+                "anno_dir":"./labels/thumos14-test-annotations",
+                "feature_dir":{
+                    "i3d-resize":{
+                        "rgb":"/data/yujiaruo/THUMOS14_Feature_V1//THUMOS14_FEATURES/I3D-4/thumos-test-rgb-resize",
+                        "flow":"/data/yujiaruo/THUMOS14_Feature_V1//THUMOS14_FEATURES/I3D-4/thumos-test-flow-resize"
+                    },
+                    "i3d-oversample":{
+                        "rgb":"/data/yujiaruo/THUMOS14_Feature_V1//THUMOS14_FEATURES/I3D-4/thumos-test-rgb-oversample",
+                        "flow":"/data/yujiaruo/THUMOS14_Feature_V1//THUMOS14_FEATURES/I3D-4/thumos-test-flow-oversample"
+                    }
+                }
+            }
+        }
+
+    }
+}
